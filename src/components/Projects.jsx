@@ -18,7 +18,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
           speed: 450
         }}
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full" >
-        <div className="relative w-full h-[230px]">
+        <div className="relative w-full h-[230px] hover:cursor-pointer" onClick={() => window.open(source_code_link, "_blank")}>
           <img
             src={image}
             alt={name}
@@ -27,7 +27,6 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
-              onClick={() => window.open(source_code_link, "_blank")}
               className="bg-black w-8 h-8 rounded-full flex justify-center items-center cursor-pointer">
               <img
                 src={github}
@@ -70,7 +69,7 @@ const Projects = () => {
           className={styles.sectionTextBlock}
         >
           This section showcases my capabilities and skills. All projects have a brief description and a link to its repository.
-          These represent my problem solving abilites, my proficiency in these languages, as well as my ability to work with various technologies. 
+          These represent my problem solving abilites, my proficiency in these languages, as well as my ability to work with various technologies.
           My resume can be found in the top right in the menu. I hope you like what you see.
         </motion.p>
       </div>

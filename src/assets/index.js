@@ -17,7 +17,7 @@ import brain from "./icons/brain.png";
 import github from "./icons/github.png";
 import menu from "./icons/menu.svg";
 import close from "./icons/close.svg";
-import resume from "./icons/resume.svg";
+import resume from "./icons/resume.png";
 
 //proj_thumbnails
 import site from "./proj_thumbnail/site.png"
