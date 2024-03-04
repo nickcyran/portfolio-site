@@ -20,32 +20,26 @@ const Scroll = () => {
   )
 }
 
+//style={{border: "solid 1px red"}}
 const MainScreen = () => {
   return (
     <section className="relative w-full min-h-screen mx-auto" style={{ border: "solid rgba(0,0,0,0)" }}>
-      <div className={`${styles.paddingX} mt-28 max-w-7xl mx-auto h-[100%] flex flex-row items-start`} >
-        <div className="flex flex-col my-auto w-full">
+      <div className={"lg:mt-40 lg:flex-row mt-28 max-w-7xl mx-auto h-[100%] flex flex-col"}>
 
-          <div className="flex flex-row">
-            <div className="flex flex-col justify-center items-center mt-5 xl:mr-6 lg:mr-6 2xl:mr-6 mr-2">
-              <div className="w-5 h-5 rounded-full bg-blue" />
-              <div className="w-1 h-48 xl:h-48 blue-gradient" />
-            </div>
-
-            <div> <h1 className={`${styles.mainText}`} >
-              Hi, I'm <span className="text-blue">Nick</span>
-            </h1>
-              <p className={`${styles.mainSubText} mt-2 w-full md:w-[80%]`}>
-                I'm a software developer who's passionate about bringing my ideas to life through code. 
-                I enjoy a challenge; solving intricate puzzles is what I do best.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative mx-auto w-full max-w-[950px] h-[500px] mt-[-20px]">
-            <ComputersCanvas />
-          </div>
+        <div className="mx-auto basis-8/12 lg:pl-[5.2rem] px-8">
+          <h1 className={styles.mainText} >
+            Hi, I'm <span className="text-blue">Nick</span>
+          </h1>
+          <p className={`${styles.mainSubText} mt-2 w-full `}>
+            I'm a software developer who's passionate about bringing my ideas to life through code.
+            I enjoy a challenge; solving intricate puzzles is what I do best.
+          </p>
         </div>
+
+        <div className="w-[30rem] h-[28rem] lg:mr-10 mx-auto">
+          <ComputersCanvas />
+        </div>  
+
       </div>
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">

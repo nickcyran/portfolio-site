@@ -12,6 +12,7 @@ module.exports = {
         "color-1": "#1b1641",
         "color-4": "#100d25",
       },
+
       screens: {
         xs: "450px",
       },

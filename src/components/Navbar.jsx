@@ -5,14 +5,15 @@ import { styles } from '../styles';
 import { navLinks } from '../constants';
 import { logo, menu, close, resume, resumepdf} from '../assets';
 
+//style={{border: "solid 1px red"}}
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-tertiary`}>
+    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-tertiary`} >
 
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+      <div className="w-full flex justify-between items-center max-w-7xl mx-auto" >
 
         <Link to="#"
           className="flex items-center gap-2"
@@ -21,15 +22,14 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
+          <img src={logo} alt="logo" className="w-9 h-9 object-contain"/>
 
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
+          <p className="text-white text-[18px] font-bold cursor-pointer h-8 w-80 flex" >
             Nick Cyran &nbsp; <span className="sm:block hidden">| Software Developer</span>
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none hidden md:flex flex-row gap-10" >
           {navLinks.map((link) => (
             <li
               key={link.id}
@@ -42,14 +42,15 @@ const Navbar = () => {
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
           ))}
-          <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+
+          <li className="w-7 h-7 object-contain">
             <Link to={resumepdf} target="_blank" rel="noopener noreferrer">
-              <img src={resume} alt="resume" className="w-8 h-8 object-contain" />
+              <img src={resume} alt="resume" />
             </Link>
-          </div>
+          </li>
         </ul>
 
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="md:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
             alt="menu"
