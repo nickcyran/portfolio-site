@@ -7,10 +7,14 @@ import { SectionWrapper } from '../hoc';
 import { projects } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion'
 
+import { useMediaQuery } from 'react-responsive'
+
 
 const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div variants={isMobile ? {} : fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{
           max: 20,
@@ -52,9 +56,11 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 }
 
 const Projects = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <section className="mt-[-64px]">
-      <motion.div variants={textVariant()} >
+      <motion.div variants={isMobile ? {} :textVariant()} >
         <p className={styles.sectionSubText}>
           MY PROJECTS
         </p>
@@ -65,7 +71,7 @@ const Projects = () => {
 
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+          variants={isMobile ? {} : fadeIn("", "", 0.1, 1)}
           className={styles.sectionTextBlock}
         >
           This section showcases my capabilities and skills. All projects have a brief description and a link to its repository.

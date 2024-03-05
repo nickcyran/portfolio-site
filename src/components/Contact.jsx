@@ -7,8 +7,11 @@ import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 
+import { useMediaQuery } from 'react-responsive'
+
 const Contact = () => {
   const formRef = useRef();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const [form, setForm] = useState({
     name: '',
@@ -63,7 +66,7 @@ const Contact = () => {
   return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
-        variants={slideIn('left', "tween", 0.2, 1)}
+        variants={isMobile ? {} : slideIn('left', "tween", 0.2, 1)}
         className="flex-[0.75] bg-color-4 p-8 rounded-2xl">
         <p className={styles.sectionSubText}>GET IN TOUCH</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
@@ -115,7 +118,7 @@ const Contact = () => {
       </motion.div>
 
       <motion.div
-        variants={slideIn('right', "tween", 0.2, 1)}
+        variants={isMobile ? {} : slideIn('right', "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'>
         <EarthCanvas />
       </motion.div>

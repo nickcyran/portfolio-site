@@ -10,7 +10,7 @@ import { fadeIn, textVariant } from '../utils/motion'
 import { SectionWrapper } from '../hoc';
 
 const ServiceCard = ({ index, title, icon }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 }); // Adjust the maxWidth as needed for your definition of mobile
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const cardVariants = isMobile ? {} : fadeIn("right", "spring", 0.5 * index, 0.75);
 
