@@ -3,7 +3,6 @@ import { technologies } from "../constants";
 import { styles } from "../styles";
 import { click } from '../assets';
 
-import { useMediaQuery } from 'react-responsive'
 import { motion } from 'framer-motion'
 import { fadeIn } from '../utils/motion'
 
@@ -45,7 +44,7 @@ const Tech = () => {
 
   return (
     <motion.div variants={fadeIn("up", "tween", 1)}>
-      <div className="flex flex-col mt-16 mx-auto bg-[#1b1641] p-3 rounded-2xl" >
+      <div className="flex flex-col mt-16 mx-auto bg-[#1b1641] p-5 rounded-2xl" >
 
         <div className="flex md:flex-row flex-col">
           <div className="basis-1/6">
