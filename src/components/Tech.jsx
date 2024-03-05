@@ -24,7 +24,6 @@ const Card = (tech) => {
               <rect width={`${tech.mastery}`} className="h-[100%] fill-[#0082fe]" />
             </svg>
           </>)}
-
       </div>
     </div>
   );
@@ -61,7 +60,7 @@ const Tech = () => {
             key={technology.name}
             onClick={() => handleTechClick(technology)}
           >
-            <img src={technology.icon} className="w-20 h-20 mx-auto" />
+            <img src={technology.icon} alt={technology.name} className="w-20 h-20 mx-auto" />
             <p className="text-white font-black text-center mt-1">{technology.name}</p>
           </div>
         ))}

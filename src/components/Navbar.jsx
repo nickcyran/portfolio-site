@@ -5,6 +5,7 @@ import { styles } from '../styles';
 import { navLinks } from '../constants';
 import { logo, menu, close, resume, resume_alt, resumepdf } from '../assets';
 
+//style={{border: "solid 1px red"}}
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-tertiary`} >
 
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto" >
+      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
 
         <Link to="#"
           className="flex items-center gap-2"
@@ -25,9 +26,9 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-8 h-8  object-contain" />
+          <img src={logo} alt="logo" className="w-8 h-8 object-contain" />
 
-          <p className="text-white text-[18px] font-bold cursor-pointer h-8 w-80 flex" >
+          <p className="text-white text-[18px] font-bold cursor-pointer h-8 sm:w-80 w-40 flex" >
             Nick Cyran &nbsp; <span className="sm:block hidden">| Software Developer</span>
           </p>
         </Link>
@@ -60,7 +61,7 @@ const Navbar = () => {
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
+            className="w-8 h-8 object-contain "
             onClick={() => setToggle(!toggle)}
           />
 

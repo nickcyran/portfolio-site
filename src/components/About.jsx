@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tilt } from 'react-tilt'
 import { motion } from 'framer-motion'
+import { useMediaQuery } from 'react-responsive'
 
 import { Tech } from './';
 import { styles } from '../styles'
@@ -9,10 +10,13 @@ import { fadeIn, textVariant } from '../utils/motion'
 import { SectionWrapper } from '../hoc';
 
 const ServiceCard = ({ index, title, icon }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 }); // Adjust the maxWidth as needed for your definition of mobile
+
+  const cardVariants = isMobile ? {} : fadeIn("right", "spring", 0.5 * index, 0.75);
+
   return (
-    <Tilt className="xs:w-[250px] w-full" >
-      <motion.div
-        variants={fadeIn("right", "spring", 0.5 * index, 0.75)}>
+    <Tilt className="xs:w-[250px] w-full">
+      <motion.div variants={cardVariants}>
         <div
           options={{
             max: 45,
@@ -30,6 +34,8 @@ const ServiceCard = ({ index, title, icon }) => {
 }
 
 const About = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <div>
       <motion.div variants={textVariant()}>
@@ -38,12 +44,10 @@ const About = () => {
       </motion.div>
 
       <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
+        variants={isMobile ? {} : fadeIn("", "", 0.1, 1)}
         className={styles.sectionTextBlock}
       >
-        I'm a computer science student at the University at Albany, with strong foundations in Java, C, JavaScript, and React.
-        I'm deeply passionate about technology, a quick learner, and an excellent problem solver. I love to learn; I am dedicated to the continuous pursuit of new ideas.
-        I'd love to be given the opportunity to work with others and create something meaningful!
+        {/* Your existing text */}
       </motion.p>
 
       <div className="mt-16 flex flex-wrap gap-10 justify-center items-center" >
