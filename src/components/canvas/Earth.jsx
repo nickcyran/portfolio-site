@@ -2,13 +2,10 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Preload, useGLTF, Float, OrbitControls } from "@react-three/drei";
 
-
-
 import CanvasLoader from '../Loader';
 
 const Earth = () => {
   const earth = useGLTF('./planet/earth.glb');
-
 
   return (
     <primitive
