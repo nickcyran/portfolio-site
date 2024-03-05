@@ -42,10 +42,8 @@ const Tech = () => {
     setSelectedTech(technology);
   }
 
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
   return (
-    <motion.div variants={isMobile ? {} : fadeIn("up", "tween", 1.7)}>
+    <motion.div variants={fadeIn("up", "tween", 1)}>
       <div className="flex flex-col mt-16 mx-auto bg-[#1b1641] p-3 rounded-2xl ">
 
         <div className="flex md:flex-row flex-col">

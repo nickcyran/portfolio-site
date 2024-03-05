@@ -1,7 +1,6 @@
 import React from 'react'
 import { Tilt } from 'react-tilt'
 import { motion } from 'framer-motion'
-import { useMediaQuery } from 'react-responsive'
 
 import { Tech } from './';
 import { styles } from '../styles'
@@ -10,13 +9,10 @@ import { fadeIn, textVariant } from '../utils/motion'
 import { SectionWrapper } from '../hoc';
 
 const ServiceCard = ({ index, title, icon }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
-  const cardVariants = isMobile ? {} : fadeIn("right", "spring", 0.5 * index, 0.75);
 
   return (
     <Tilt className="xs:w-[250px] w-full">
-      <motion.div variants={cardVariants}>
+      <motion.div variants={fadeIn("right", "spring", 0.5 * index, 0.75)}>
         <div
           options={{
             max: 45,
@@ -34,17 +30,15 @@ const ServiceCard = ({ index, title, icon }) => {
 }
 
 const About = () => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
   return (
     <div>
-      <motion.div variants={isMobile ? {} : textVariant()}>
+      <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText} >INTRODUCTION</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
       <motion.p
-        variants={isMobile ? {} : fadeIn("", "", 0.1, 1)}
+        variants={fadeIn("", "", 0.1, 1)}
         className={styles.sectionTextBlock}
       >
         I'm a computer science student at the University at Albany, with strong foundations in Java, C, JavaScript, and React.
