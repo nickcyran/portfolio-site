@@ -6,7 +6,7 @@ import {
     javascript,
     html,
     css,
-    reactjs,
+    react,
     nodejs,
     mongodb,
     git,
@@ -15,6 +15,9 @@ import {
     site,
     interpreter,
     calc,
+    tailwind,
+    bash,
+    threejs,
   } from "../assets";
   
   export const navLinks = [
@@ -55,38 +58,62 @@ import {
     {
       name: "Java",
       icon: java,
+      mastery: "90%",
     },
     {
       name: "C",
       icon: cprog,
+      mastery: "80%",
     },
     {
       name: "JavaScript",
       icon: javascript,
+      mastery: "75%",
     },
     {
       name: "React JS",
-      icon: reactjs,
-    },
-    {
-      name: "Node JS",
-      icon: nodejs,
-    },
-    {
-      name: "MongoDB",
-      icon: mongodb,
+      icon: react,
+      mastery: "70%",
     },
     {
       name: "HTML 5",
       icon: html,
+      mastery: "95%",
     },
     {
       name: "CSS 3",
       icon: css,
+      mastery: "80%",
+    },
+    {
+      name: "Tailwind",
+      icon: tailwind,
+      mastery: "80%",
+    },
+    {
+      name: "Node JS",
+      icon: nodejs,
+      mastery: "60%",
+    },
+    {
+      name: "Three.js",
+      icon: threejs,
+      mastery: "40%",
+    },
+    {
+      name: "MongoDB",
+      icon: mongodb,
+      mastery: "55%",
+    },
+    {
+      name: "BASH",
+      icon: bash,
+      mastery: "60%",
     },
     {
       name: "git",
       icon: git,
+      mastery: "70%",
     },
   ];
   

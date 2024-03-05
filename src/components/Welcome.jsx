@@ -23,10 +23,10 @@ const Scroll = () => {
 //style={{border: "solid 1px red"}}
 const MainScreen = () => {
   return (
-    <section className="relative w-full min-h-screen mx-auto" style={{ border: "solid rgba(0,0,0,0)" }}>
-      <div className={"lg:mt-40 lg:flex-row mt-28 max-w-7xl mx-auto h-[100%] flex flex-col"}>
+    <section className="relative w-full min-h-screen mx-auto grid content-center">
+    <div className="lg:flex-row lg:mx-24 mx-auto flex flex-col lg:pt-5 pt-28 justify-center">
 
-        <div className="mx-auto basis-8/12 lg:pl-[5.2rem] px-8">
+        <div className="basis-6/12 lg:pl-[5.2rem] px-8 h-fit">
           <h1 className={styles.mainText} >
             Hi, I'm <span className="text-blue">Nick</span>
           </h1>
@@ -36,7 +36,7 @@ const MainScreen = () => {
           </p>
         </div>
 
-        <div className="w-[30rem] h-[28rem] lg:mr-10 mx-auto">
+        <div className="sm:w-[30rem] sm:h-[28rem] w-[90%] h-[28rem] lg:mr-10 lg:ml-[-10px] mx-auto my-auto">
           <ComputersCanvas />
         </div>  
 

@@ -11,7 +11,10 @@ const styles = {
     sectionSubText:
       "sm:text-[18px] text-[14px] text-secondary tracking-wider",
     sectionTextBlock:
-      "mt-4 text-[18px] max-w-3xl leading-[30px]"
+      "mt-4 text-[18px] max-w-3xl leading-[30px]",
+
+      skills:
+      "text-white font-black md:text-[40px] sm:text-[40px] xs:text-[30px] text-[20px]",
   };
   
   export { styles };

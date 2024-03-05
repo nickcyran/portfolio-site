@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 
 import { styles } from '../styles';
 import { navLinks } from '../constants';
-import { logo, menu, close, resume, resumepdf} from '../assets';
+import { logo, menu, close, resume, resume_alt, resumepdf } from '../assets';
 
-//style={{border: "solid 1px red"}}
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const displayResume = isHovered ? resume_alt : resume;
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-tertiary`} >
@@ -22,7 +25,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain"/>
+          <img src={logo} alt="logo" className="w-8 h-8  object-contain" />
 
           <p className="text-white text-[18px] font-bold cursor-pointer h-8 w-80 flex" >
             Nick Cyran &nbsp; <span className="sm:block hidden">| Software Developer</span>
@@ -36,16 +39,19 @@ const Navbar = () => {
               className={`${active === link.title
                 ? "text-white"
                 : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer`} 
-                onClick={() => setActive(link.title)}
-              >
+                } hover:text-white text-[18px] font-medium cursor-pointer`}
+              onClick={() => setActive(link.title)}
+            >
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
           ))}
 
-          <li className="w-7 h-7 object-contain">
+          <li className="w-8 h-8 object-contain mt-[-3px]"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             <Link to={resumepdf} target="_blank" rel="noopener noreferrer">
-              <img src={resume} alt="resume" />
+              <img src={displayResume} alt="resume" />
             </Link>
           </li>
         </ul>

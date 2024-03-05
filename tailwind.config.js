@@ -10,7 +10,7 @@ module.exports = {
         tertiary: "#151030",
         "blue": "#0077ff",
         "color-1": "#1b1641",
-        "color-4": "#100d25",
+        "color-4": "#100d25", 
       },
 
       screens: {

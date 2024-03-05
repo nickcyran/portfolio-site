@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import {
   About, Contact,
-  MainScreen, Navbar, Projects, StarsCanvas
+  Welcome, Navbar, Projects, StarsCanvas
 } from './components';
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
       <div className='relative z-0 bg-gradient'>
         <div className='bg-begin bg-cover bg-center'>
           <Navbar />
-          <MainScreen />
+          <Welcome />
         </div>
 
         <About />
