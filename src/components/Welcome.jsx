@@ -23,8 +23,8 @@ const Scroll = () => {
 //style={{border: "solid 1px red"}}
 const MainScreen = () => {
   return (
-    <section className="relative w-full min-h-screen mx-auto grid content-center">
-    <div className="lg:flex-row lg:mx-24 mx-auto flex flex-col lg:pt-5 pt-28 justify-center">
+    <section className="relative w-full min-h-screen mx-auto grid content-center" >
+    <div className="lg:flex-row px-10 mx-auto flex flex-col lg:pt-5 pt-28 justify-center">
 
         <div className="basis-6/12 lg:pl-[5.2rem] px-8 h-fit">
           <h1 className={styles.mainText} >
