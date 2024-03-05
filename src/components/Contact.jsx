@@ -117,9 +117,12 @@ const Contact = () => {
       <motion.div
         variants={slideIn('right', "tween", 0.2, 1)}
         className="flex-shrink-0 
-                  xs:h-[22rem] xs:w-[24rem]
-                  sm:h-[25rem] sm:w-[26rem]
-                  md:h-[30rem] md:w-[32rem] 
+                  xs:h-[24rem] xs:w-[24rem]
+                  sm:h-[30rem] sm:w-[30rem]
+                  md:h-[32rem] md:w-[32rem] 
+                  lg:h-[32rem] lg:w-[32rem]
+
+                  h-[20rem] w-[20rem]
                   mx-auto my-auto">
 
         <EarthCanvas />
