@@ -64,7 +64,7 @@ const Contact = () => {
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
         variants={slideIn('left', "tween", 0.2, 1)}
-        className="flex-[0.75] bg-color-4 p-8 rounded-2xl">
+        className="basis-5/12 bg-color-4 p-8 rounded-2xl">
         <p className={styles.sectionSubText}>GET IN TOUCH</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
@@ -99,7 +99,7 @@ const Contact = () => {
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Your Message</span>
             <textarea
-              rows='7'
+              rows='4'
               name='message'
               value={form.message}
               onChange={handleChange}
@@ -116,7 +116,7 @@ const Contact = () => {
 
       <motion.div
         variants={slideIn('right', "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'>
+        className='xl:flex-1 md:h-[40rem] h-[25rem] md:w-[30rem] w-[25rem] md:ml-12 mx-auto my-auto' style={{border: "solid 1px red"}}>
         <EarthCanvas />
       </motion.div>
     </div>
