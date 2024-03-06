@@ -123,7 +123,7 @@ import {
     {
       name: "This Site!",
       description:
-        "React-based portfolio website.",
+        "React-based portfolio website integrating APIs for email functionality, as well as Three.js for 3D elements.",
       tags: [
         {
           name: "react",
@@ -161,7 +161,7 @@ import {
     {
       name: "Calculator",
       description:
-        "Java-based program that utilizes interpretation techniques in order to perform calculations. Front end developed with JavaFX",
+        "Java-based program that utilizes interpretation techniques in order to perform calculations. Front end developed with JavaFX.",
       tags: [
         {
           name: "java",

@@ -16,7 +16,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
           max: 20,
           scale: 1,
           speed: 450
-        }} className="bg-tertiary rounded-2xl sm:w-[360px] w-full " >
+        }} className="bg-tertiary rounded-2xl w-[360px] " >
 
         <div className="relative w-full h-[230px] hover:cursor-pointer " 
              onClick={() => window.open(source_code_link, "_blank")}
