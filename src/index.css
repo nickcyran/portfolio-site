@@ -14,7 +14,7 @@
 }
 
 .shadow-inner {
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the values as needed */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7); 
 }
 
 .bg-gradient {
