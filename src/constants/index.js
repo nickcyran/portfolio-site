@@ -63,7 +63,7 @@ import {
     {
       name: "C",
       icon: cprog,
-      mastery: "80%",
+      mastery: "70%",
     },
     {
       name: "JavaScript",
