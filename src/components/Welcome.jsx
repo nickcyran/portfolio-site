@@ -28,7 +28,7 @@ const MainScreen = () => {
 
         <div className="basis-6/12 lg:pl-[5.2rem] px-8 h-fit">
           <h1 className={styles.mainText} >
-            Hi, I'm <span className="text-blue">Nick</span>
+            Hey, I'm <span className="text-blue">Nick</span>
           </h1>
           <p className={`${styles.mainSubText} mt-2 w-full `}>
             I'm a software developer who's passionate about bringing my ideas to life through code.
