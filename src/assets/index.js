@@ -28,12 +28,15 @@ import click from "./icons/click.png";
 import site from "./proj_thumbnail/site.png"
 import interpreter from "./proj_thumbnail/interpreter.png";
 import calc from "./proj_thumbnail/calc.png";
+import renderer from "./proj_thumbnail/render.png"
+import sia32 from "./proj_thumbnail/sia32.jpg"
 
 //documents
 import resumepdf from "./documents/RESUME.pdf"
 import logo from "./logo.svg";
 
 export {
+  sia32,
   click,
   tailwind,
   threejs,
@@ -61,4 +64,5 @@ export {
   nodejs,
   react,
   site,
+  renderer,
 };

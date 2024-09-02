@@ -18,6 +18,8 @@ import {
     tailwind,
     bash,
     threejs,
+    renderer,
+    sia32,
   } from "../assets";
   
   export const navLinks = [
@@ -63,7 +65,7 @@ import {
     {
       name: "C",
       icon: cprog,
-      mastery: "70%",
+      mastery: "60%",
     },
     {
       name: "JavaScript",
@@ -120,6 +122,40 @@ import {
   const experiences = [];
   
   const projects = [
+    {
+      name: "32-bit Computer Emulator",
+      description:
+        "Developed an emulator and assembly language for the SIA-32 chip architecture, with 4KB of main memory, caching mechanisms, and much more.",
+      tags: [
+        {
+          name: "java",
+          color: "pink-text-gradient",
+        },
+        {
+          name: "binary",
+          color: "blue-text-gradient", 
+        },
+        {
+          name: "assembly",
+          color: "green-text-gradient",
+        },
+      ],
+      image: sia32,
+      source_code_link: "https://github.com/nickcyran/SIA32-Emulator",
+    },
+    {
+      name: "3D Graphics Renderer",
+      description:
+        "Using only 2D graphics libraries (Java's AWT), this project aims to create a 3D graphics rendering environment. [WIP]",
+      tags: [
+        {
+          name: "java",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: renderer,
+      source_code_link: "https://github.com/nickcyran/3D-Renderer",
+    },
     {
       name: "This Site!",
       description:

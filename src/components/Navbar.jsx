@@ -12,23 +12,23 @@ const Navbar = () => {
 
   const [isHovered, setIsHovered] = useState(false);
 
-  const displayResume = isHovered ? resume_alt : resume;
+  const displayResume = isHovered ? resume : resume_alt;
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-tertiary`} >
+    <nav className={`${styles.paddingX} w-full flex items-center py-3 fixed top-0 z-20 bg-tertiary`} >
 
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+      <div className="w-full flex justify-between items-center mx-auto">
 
         <Link to="#"
-          className="flex items-center gap-2"
+          className="flex items-center gap-4"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-8 h-8 object-contain" />
+          <img src={logo} alt="logo" className="w-12 h-12 object-contain " />
 
-          <p className="text-white text-[18px] font-bold cursor-pointer h-8 sm:w-80 w-40 flex" >
+          <p className="text-white text-[18px] font-bold cursor-pointer h-8 sm:w-80 w-40 flex items-center " >
             Nick Cyran &nbsp; <span className="sm:block hidden">| Software Developer</span>
           </p>
         </Link>
@@ -38,9 +38,9 @@ const Navbar = () => {
             <li
               key={link.id}
               className={`${active === link.title
-                ? "text-white"
-                : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer`}
+                ? "text-[#f5c656]"
+                : "text-white"
+                } hover:text-[#f5c656] text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(link.title)}
             >
               <a href={`#${link.id}`}>{link.title}</a>
@@ -57,7 +57,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="md:hidden flex flex-1 justify-end items-center">
+        <div className="md:hidden flex flex-1 justify-end items-center cursor-pointer">
           <img
             src={toggle ? close : menu}
             alt="menu"
@@ -72,8 +72,8 @@ const Navbar = () => {
                 <li
                   key={link.id}
                   className={`${active === link.title
-                    ? "text-white"
-                    : "text-secondary"} font-poppins font-medium cursor-pointer text-[16px]`}
+                    ? "text-[#f5c656]"
+                    : "text-white"} font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(link.title);
@@ -81,7 +81,7 @@ const Navbar = () => {
                   <a href={`#${link.id}`}>{link.title}</a>
                 </li>
               ))}
-              <Link className="text-secondary font-poppins font-medium cursor-pointer text-[16px]" to={resumepdf} target="_blank" rel="noopener noreferrer">Resume </Link>
+              <Link className="text-white font-poppins font-medium cursor-pointer text-[16px]" to={resumepdf} target="_blank" rel="noopener noreferrer">Resume </Link>
             </ul>
           </div>
         </div>
