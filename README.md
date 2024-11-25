@@ -10,8 +10,8 @@ The use of Tailwind CSS ensured a modern design and responsiveness across variou
 </p>
 
 <p align="center">
-   <img src="https://github.com/user-attachments/assets/d9949b6e-1756-42bf-bcb0-d33d35badbbb" alt="screenshot 2" width="300"/>
-   <img src="https://github.com/user-attachments/assets/1e50d52f-fc5a-4616-b899-319d28ef660f" alt="screenshot 3" width="300"/>
+   <img src="https://github.com/user-attachments/assets/d9949b6e-1756-42bf-bcb0-d33d35badbbb" alt="screenshot 2" width="400"/>
+   <img src="https://github.com/user-attachments/assets/1e50d52f-fc5a-4616-b899-319d28ef660f" alt="screenshot 3" width="400"/>
 </p>
 
 ### What's next?:
