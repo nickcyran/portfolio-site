@@ -23,6 +23,7 @@ import close from "./icons/close.svg";
 import resume from "./icons/resume.png";
 import resume_alt from "./icons/resume_alt.png";
 import click from "./icons/click.png";
+import linkedin from './icons/linkedin.svg'
 
 //proj_thumbnails
 import site from "./proj_thumbnail/site.png"
@@ -33,9 +34,11 @@ import sia32 from "./proj_thumbnail/sia32.jpg"
 
 //documents
 import resumepdf from "./documents/RESUME.pdf"
-import logo from "./logo.svg";
+import logo from "./logo.png";
+
 
 export {
+  linkedin,
   sia32,
   click,
   tailwind,
@@ -65,4 +68,5 @@ export {
   react,
   site,
   renderer,
+
 };

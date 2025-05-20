@@ -15,7 +15,7 @@ const Navbar = () => {
   const displayResume = isHovered ? resume : resume_alt;
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-3 fixed top-0 z-20 bg-tertiary`} >
+    <nav className={`${styles.paddingX} w-full flex items-center py-3 fixed top-0 z-20 bg-black`} >
 
       <div className="w-full flex justify-between items-center mx-auto">
 
@@ -26,10 +26,9 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-12 h-12 object-contain " />
 
-          <p className="text-white text-[18px] font-bold cursor-pointer h-8 sm:w-80 w-40 flex items-center " >
-            Nick Cyran &nbsp; <span className="sm:block hidden">| Software Developer</span>
+          <p className="text-white text-[18px] font-bold cursor-pointer h-8 sm:w-96 w-40 flex items-center " >
+            Nick Cyran&nbsp;<span className="sm:block hidden">| Software Developer</span>
           </p>
         </Link>
 

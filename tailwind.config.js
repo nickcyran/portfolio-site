@@ -10,14 +10,13 @@ module.exports = {
         tertiary: "#151030",
         "blue": "#0077ff",
         "color-1": "#1b1641",
-        "color-4": "#100d25", 
+        "color-4": "#100d25",
       },
-
       screens: {
         xs: "450px",
       },
       backgroundImage: {
-        "begin": "url('/src/assets/mainbackground.png')",
+        "tile-pattern": "url('./bayer4x4.png')",
       },
     },
   },

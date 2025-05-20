@@ -8,14 +8,15 @@ import {
 const App = () => {
   return (
     <BrowserRouter>
-      <div className='relative z-0 bg-gradient'>
-        <div className='bg-begin bg-cover bg-center'>
+      <div className='relative z-0 bg-[#08080A]'>
+        <div className='relative isolate z-10'>
           <Navbar />
           <Welcome />
         </div>
 
         <About />
         <Projects />
+
         <div className='relative z-0'>
           <Contact />
           <StarsCanvas />

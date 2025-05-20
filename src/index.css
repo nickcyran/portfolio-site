@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,36 +8,88 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+
   scroll-behavior: smooth;
   color-scheme: dark;
 }
 
 .shadow-inner {
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7); 
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
 .bg-gradient {
   background: linear-gradient(-90deg, var(#0082fe) 0%, rgba(60, 51, 80, 0) 100%);
 
   background: -webkit-linear-gradient(-90deg,
-      #0082fe 0%,
-      #0082fe 45%,
+      #0D0E0E 0%,
+      #0C0A11 45%,
       #241542 78%,
       #000000 100%);
 }
 
+.nick-dithered-gradient {
+  position: relative;
+  font-weight: bold;
+  background-image: linear-gradient(5deg, rgb(62, 49, 162) 20%, rgb(155, 81, 165) 40%, rgb(163, 229, 153) 65%);
+  background-size: auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.nick-dithered-gradient::before {
+  content: attr(data-text);
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  color: rgba(62, 49, 162,0);
+  z-index: -1;
+  pointer-events: none;
+  text-shadow: 0px 0px 3px rgba(62, 49, 162,1);
+}
+
+.nick-dithered-gradient::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./bayer4x4.png');
+  background-size: 8px 8px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  opacity: 0.25;
+  mix-blend-mode: overlay;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blinking-cursor-style {
+  display: inline-block;
+  width: 10px; /* Slightly wider for visibility */
+  height: 1.2em; /* Match text height */
+  background-color: #aaa6c3; /* secondary color from tailwind.config.js */
+  margin-left: 3px;
+  /* Animation will be handled by framer-motion for this example */
+}
+
+
 .orange-text-gradient {
   background: #f12711;
-  /* fallback for old browsers */
+
   background: -webkit-linear-gradient(to top,
       #f12711,
       #f5af19);
-  /* Chrome 10-25, Safari 5.1-6 */
+
   background: linear-gradient(to top,
       #f12711,
       #f5af19);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

@@ -67,3 +67,35 @@ export const staggerContainer = (staggerChildren, delayChildren) => {
     },
   };
 };
+
+export const blinkingCursor = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: [0, 1, 0],
+    transition: {
+      duration: 0.7, // Speed of the blink
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
+// Not directly used in the About.jsx typewriter if using JS, but good to have
+export const bootSequenceContainer = (staggerChildren, delayChildren) => {
+  return {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: staggerChildren || 0.05,
+        delayChildren: delayChildren || 0,
+      },
+    },
+  };
+};
+
+export const bootSequenceText = (delay) => {
+  return {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness:100, damping:10, duration: 0.5, delay: delay, } },
+  };
+};
