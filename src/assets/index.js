@@ -35,9 +35,11 @@ import sia32 from "./proj_thumbnail/sia32.jpg"
 //documents
 import resumepdf from "./documents/RESUME.pdf"
 import logo from "./logo.png";
+import me from "./me.png";
 
 
 export {
+  me,
   linkedin,
   sia32,
   click,

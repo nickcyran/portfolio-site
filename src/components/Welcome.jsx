@@ -1,7 +1,7 @@
 import { styles } from '../styles';
 import { RetroDitheredCanvas } from './canvas';
 import { motion } from 'framer-motion';
-import { github, linkedin } from '../assets';
+import { github, linkedin, me } from '../assets';
 
 const ScrollIndicator = () => (
   <div className="w-[32px] h-[54px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
@@ -35,7 +35,7 @@ const MainScreen = () => {
     <div className={`flex flex-col items-center flex-shrink-0 w-auto lg:pt-12`}>
       <img
         className="w-40 h-40 rounded-full object-cover border-[3px] border-secondary shadow-xl mb-3"
-        src={'./src/assets/me.png'}
+        src={me}
         alt="Nick - Software Developer"
       />
       <div className="flex space-x-4 mx-auto ">

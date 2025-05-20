@@ -58,7 +58,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('./bayer4x4.png');
+  background-image: url('/portfolio-site/bayer4x4.png');
   background-size: 8px 8px;
   background-clip: text;
   -webkit-background-clip: text;

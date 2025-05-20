@@ -15,7 +15,7 @@ const CONFIG = {
   ambientLight: 0.2,
   directionalLight: 2.7,
   modelPath: "./decahedron.glb", // Ensure this path is correct
-  bayerPath: "./bayer4x4.png",   // Ensure this path is correct
+  bayerPath: "/portfolio-site/bayer4x4.png",   // Ensure this path is correct
   palette: [
     [62, 49, 162], [85, 85, 85], [155, 81, 165], [138, 123, 206],
     [104, 174, 92], [121, 193, 200], [163, 229, 153], [255, 255, 255],
