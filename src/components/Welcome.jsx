@@ -32,7 +32,7 @@ const MainScreen = () => {
   ];
 
   const ProfileImageAndSocials = () => (
-    <div className={`flex flex-col items-center flex-shrink-0 w-auto lg:pt-12`}>
+    <div className={`flex flex-col items-center flex-shrink-0 w-auto lg:pt-24`}>
       <img
         className="w-40 h-40 rounded-full object-cover border-[3px] border-secondary shadow-xl mb-3"
         src={me}
@@ -59,7 +59,7 @@ const MainScreen = () => {
     <div className={`
       flex flex-col text-center flex-grow mt-6 md:mt-0 md:order-3  
       sm:text-center sm:w-full                        
-      lg:text-left lg:pt-12 md:w-auto lg:max-w-[42vw]  lg:order-2                        
+      lg:text-left lg:pt-24 md:w-auto lg:max-w-[42vw]  lg:order-2                        
     `}>
       <h1 className={`${styles.mainText} z-20`}>
         Hey, I'm <span className="nick-dithered-gradient" data-text="Nick">Nick</span>
@@ -80,7 +80,7 @@ const MainScreen = () => {
   );
 
   return (
-    <section className="relative w-full min-h-screen mx-auto flex flex-col bg-[#0D0E0E] shadow-[inset_0_-15px_22px_0_rgba(0,0,0,0.7)]">
+    <section className="scanlines relative w-full min-h-screen mx-auto flex flex-col bg-[#0D0E0E] shadow-[inset_0_-15px_22px_0_rgba(0,0,0,0.7)]  animated-gradient-bg">
       <div className='absolute inset-0 bg-tile-pattern bg-repeat opacity-[2%]' style={{ zIndex: 0 }} />
 
       <div

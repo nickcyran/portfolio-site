@@ -16,7 +16,7 @@ module.exports = {
         xs: "450px",
       },
       backgroundImage: {
-        "tile-pattern": "url('./bayer4x4.png')",
+        "tile-pattern": "url('/portfolio-site/bayer4x4.png')",
       },
     },
   },

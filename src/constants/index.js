@@ -39,10 +39,6 @@ import {
   
   const services = [
     {
-      title: "Object Oriented Programming",
-      icon: oop,
-    },
-    {
       title: "Backend Development",
       icon: backend,
     },

@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 export const textVariant = (delay) => {
   return {
     hidden: {
@@ -99,3 +101,4 @@ export const bootSequenceText = (delay) => {
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness:100, damping:10, duration: 0.5, delay: delay, } },
   };
 };
+

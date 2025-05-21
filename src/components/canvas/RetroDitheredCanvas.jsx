@@ -14,8 +14,8 @@ const CONFIG = {
   metalness: 0.05,
   ambientLight: 0.2,
   directionalLight: 2.7,
-  modelPath: "./decahedron.glb", // Ensure this path is correct
-  bayerPath: "/portfolio-site/bayer4x4.png",   // Ensure this path is correct
+  modelPath: "./decahedron.glb",
+  bayerPath: "/portfolio-site/bayer4x4.png", 
   palette: [
     [62, 49, 162], [85, 85, 85], [155, 81, 165], [138, 123, 206],
     [104, 174, 92], [121, 193, 200], [163, 229, 153], [255, 255, 255],
@@ -98,6 +98,7 @@ export default function RetroDitheredCanvas() {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enableZoom = false;
+    controls.enablePan = false;
     controls.target.set(0, 0.5, 0);
 
     scene.add(new THREE.AmbientLight(0xffffff, CONFIG.ambientLight));
@@ -143,12 +144,11 @@ export default function RetroDitheredCanvas() {
     new GLTFLoader().load(CONFIG.modelPath, (gltf) => {
       gltf.scene.traverse(child => {
         if (child.isMesh) {
-          // 3. Enable shadow casting and receiving for each mesh
           child.castShadow = true;
           child.receiveShadow = true;
 
           child.material = new THREE.MeshStandardMaterial({
-            color: 0xffffff, // Ensure the material can show shadows
+            color: 0xffffff,
             roughness: CONFIG.roughness,
             metalness: CONFIG.metalness
           });
@@ -171,22 +171,21 @@ export default function RetroDitheredCanvas() {
     const onResize = () => {
       const s = el.clientWidth;
       renderer.setSize(s, s);
-      camera.aspect = 1; // Assuming square canvas, update if not
+      camera.aspect = 1;
       camera.updateProjectionMatrix();
       const r = s * window.devicePixelRatio;
       shaderPass.uniforms.resolution.value.set(r, r);
-      composer.setSize(r, r); // composer also needs to be resized
+      composer.setSize(r, r); 
     };
     window.addEventListener("resize", onResize);
-    // Initial call to set size correctly
     onResize();
 
     return () => {
       window.removeEventListener("resize", onResize);
-      if (el && renderer.domElement) { // Check if el and domElement exist
+      if (el && renderer.domElement) { 
         el.removeChild(renderer.domElement);
       }
-      // Dispose of Three.js objects to free up resources
+
       scene.traverse(object => {
         if (object.geometry) object.geometry.dispose();
         if (object.material) {
@@ -198,9 +197,9 @@ export default function RetroDitheredCanvas() {
         }
       });
       renderer.dispose();
-      composer.dispose(); // If composer has a dispose method
+      composer.dispose(); 
     };
-  }, []); // Empty dependency array means this runs once on mount and cleans up on unmount
+  }, []);
 
   return <div ref={mountRef} style={{ width: "100%", height: "100%", cursor: "grab" }} />;
 }
