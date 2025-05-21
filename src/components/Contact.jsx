@@ -28,8 +28,8 @@ const Contact = () => {
     setLoading(true);
 
     emailjs.send(
-      'service_ysgl1la',
-      'template_eqkgygq',
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       {
         from_name: form.name,
         to_name: 'Nick',
@@ -37,7 +37,7 @@ const Contact = () => {
         to_email: 'ncyran@albany.edu',
         message: form.message,
       },
-      'L4h41hOX78FQxYtwz'
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
       .then(() => {
         // Success block

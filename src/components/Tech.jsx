@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { technologies } from "../constants"; 
+import { technologies } from "../constants";
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer } from '../utils/motion';
 import TypewriterText from '../utils/TypewriterText';
@@ -27,23 +27,18 @@ const StaticTextDisplay = ({ text }) => (
 
 const SkillOutputDisplay = ({ tech }) => {
   return (
-    <motion.div
-      className="w-full flex items-start pt-1 text-cli-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, delay: 0.1 }}
-    >
-      <motion.div className="h-12 w-12 p-0.5 mr-2 mt-1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
+    <div className="w-full flex items-start pt-1 text-cli-white">
+      <div className="h-12 w-12 p-0.5 mr-2 mt-1">
         <img src={tech.icon} alt={tech.name} className="object-contain max-w-full max-h-full filter grayscale" />
-      </motion.div>
+      </div>
       <div className="ml-1 w-full text-xs">
         <p className="mb-0.5 font-semibold">Skill: {tech.name}</p>
         <p className="text-cli-light-gray mb-1">Mastery:</p>
-        <motion.p className="text-cli-green text-xs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2, delay: 0.05 }}>
+        <p className="text-cli-green text-xs">
           {getMasteryBar(tech.mastery)}
-        </motion.p>
+        </p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -153,7 +148,7 @@ const Tech = () => {
       <div className="h-px bg-[#303070] my-1 mx-2" />
 
       <div className="px-2 pb-1 h-56 overflow-auto cli-scrollbar mr-2">
-        <p className="text-xs text-cli-light-gray mb-1 ml-1 ">Available skill protocols (select to query):</p>
+        <p className="text-xs text-cli-light-gray mb-1 ml-1 ">Available skills (select to query):</p>
         <motion.div
           className="flex flex-col gap-0  pr-1 "
           variants={staggerContainer(0.015, 0.025)}
@@ -177,7 +172,7 @@ const Tech = () => {
             return (
               <div
                 key={tech.name}
-                className={`flex items-center pl-1.5 pr-1 py-0.5 text-xl ${itemClass}`}
+                className={`flex items-center pl-1.5 pr-1 py-0.5 lg:text-sm md:text-md text-xl ${itemClass}`}
                 onClick={() => !(isLocked || isBeingProcessed) && selectTech(tech)}
                 onMouseEnter={() => !(isLocked || isBeingProcessed) && setHover(tech.name)}
                 onMouseLeave={() => !(isLocked || isBeingProcessed) && setHover(null)}

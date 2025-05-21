@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Tilt } from 'react-tilt';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import { Tech } from './';
 import { styles } from '../styles';
-import { services } from '../constants';
+import { services, coursework } from '../constants';
 import { fadeIn } from '../utils/motion';
 import { SectionWrapper } from '../hoc';
 import TypewriterText from '../utils/TypewriterText';
@@ -45,6 +45,14 @@ const ServiceCard = ({ index, title, icon }) => {
   );
 };
 
+const CourseworkCard = ({ title }) => {
+  return (
+    <div className="bg-[#030330] border border-[#303070] p-3 rounded-lg shadow-md hover:shadow-purple-500/30 transition-shadow duration-300 min-w-[200px] xs:min-w-[180px]">
+      <h3 className="text-white text-[0.85rem] font-medium text-center">{title}</h3>
+    </div>
+  );
+};
+
 
 const About = () => {
   const introText = "Introduction";
@@ -53,7 +61,7 @@ const About = () => {
 
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
   });
 
   const [introComplete, setIntroComplete] = useState(false);
@@ -93,20 +101,42 @@ const About = () => {
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row mt-10 gap-12"> {/* Added lg:flex-row and gap */}
-
-
-        <div className="lg:w-5/7 w-full"> {/* Control width on larger screens */}
-          <Tech />
+      {/* Tech and Services Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }} 
+      >
+        <div className="flex flex-col lg:flex-row mt-10 gap-12 mb-[-3rem]">
+          <div className="lg:w-5/7 w-full">
+            <Tech />
+          </div>
+          <div className="lg:w-1/6 w-full lg:flex-col flex flex-wrap gap-6 justify-center items-start items-center">
+            {services.map((service, index) => (
+              <ServiceCard key={service.title} index={index} {...service} />
+            ))}
+          </div>
         </div>
+      </motion.div>
 
-        {/* ServiceCards container */}
-        <div className="lg:w-1/6 w-full lg:flex-col flex flex-wrap gap-6 justify-center items-start items-center"> {/* Control width and item alignment */}
-          {services.map((service, index) => (
-            <ServiceCard key={service.title} index={index} {...service} />
-          ))}
+      {/* Coursework Section */}
+      <motion.div
+        className="mt-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.5 }} // Stagger appearance after Tech/Services
+      >
+        <div>
+          <p className={styles.sectionSubText}>
+            Relevant Coursework.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4 sm:gap-6">
+            {coursework.map((course, index) => (
+              <CourseworkCard key={index} title={course.title} />
+            ))}
+          </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

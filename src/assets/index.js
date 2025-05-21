@@ -10,6 +10,7 @@ import nodejs from "./tech/nodejs.png";
 import react from "./tech/reactjs.png";
 import tailwind from "./tech/tailwind.svg";
 import bash from "./tech/bash.svg";
+import python from './tech/python.png'
 import threejs from "./tech/threejs.svg";
 
 //icons 
@@ -39,6 +40,7 @@ import me from "./me.png";
 
 
 export {
+  python,
   me,
   linkedin,
   sia32,
