@@ -25,11 +25,11 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true); 
 
     emailjs.send(
-      import.meta.env.REACT_APP_EMAILJS_SERVICE_ID,
-      import.meta.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
       {
         from_name: form.name,
         to_name: 'Nick',
@@ -37,10 +37,9 @@ const Contact = () => {
         to_email: 'ncyran@albany.edu',
         message: form.message,
       },
-      import.meta.env.REACT_APP_EMAILJS_PUBLIC_KEY 
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
     )
       .then(() => {
-        // Success block
         setLoading(false);
         alert("Thank you! I will get back to you as soon as possible.");
 
@@ -51,7 +50,6 @@ const Contact = () => {
         });
       })
       .catch((error) => {
-        // Error block
         setLoading(false);
         console.error(error);
         alert('Something went wrong.');
