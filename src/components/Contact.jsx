@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser'
 
 import { styles } from '../styles';
-import { EarthCanvas } from './canvas';
+import { ComputersCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 
@@ -123,7 +123,7 @@ const Contact = () => {
                   h-[20rem] w-[20rem]
                   mx-auto my-auto">
 
-        <EarthCanvas />
+        < ComputersCanvas/>
       </motion.div>
     </div>
   )
