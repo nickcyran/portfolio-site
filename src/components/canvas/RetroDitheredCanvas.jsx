@@ -7,15 +7,12 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 
 const CONFIG = {
-  blur: 1.0,
-  pixelSize: 1.0,
+  pixelSize: 3.0,
   bayerSize: 12.0,
-  roughness: 0.75,
-  metalness: 0.05,
   ambientLight: 0.2,
   directionalLight: 2.7,
   modelPath: "./decahedron.glb",
-  bayerPath: "/portfolio-site/bayer4x4.png", 
+  bayerPath: "/portfolio-site/bayer4x4.png",
   palette: [
     [62, 49, 162], [85, 85, 85], [155, 81, 165], [138, 123, 206],
     [104, 174, 92], [121, 193, 200], [163, 229, 153], [255, 255, 255],
@@ -24,51 +21,46 @@ const CONFIG = {
 
 const CombinedShader = {
   uniforms: {
-    tDiffuse: { value: null }, tBayer: { value: null },
+    tDiffuse: { value: null },
+    tBayer: { value: null },
     resolution: { value: new THREE.Vector2() },
-    pixelSize: { value: CONFIG.pixelSize }, bayerTileSize: { value: CONFIG.bayerSize },
-    u_palette: { value: CONFIG.palette }, u_paletteSize: { value: CONFIG.palette.length },
-    blurAmount: { value: CONFIG.blur }
+    pixelSize: { value: CONFIG.pixelSize },
+    bayerTileSize: { value: CONFIG.bayerSize },
+    u_palette: { value: CONFIG.palette },
+    u_paletteSize: { value: CONFIG.palette.length },
   },
-  vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+  vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }`,
   fragmentShader: `
     precision highp float;
     varying vec2 vUv;
     uniform sampler2D tDiffuse, tBayer;
     uniform vec2 resolution;
-    uniform float pixelSize, bayerTileSize, blurAmount;
+    uniform float pixelSize, bayerTileSize;
     uniform vec3 u_palette[8];
     uniform int u_paletteSize;
 
     void main() {
-      vec4 src = texture2D(tDiffuse, vUv);
+      vec2 d = pixelSize / resolution;
+      vec2 pUv = floor(vUv / d) * d + 0.5 * d;
+      vec4 src = texture2D(tDiffuse, pUv);
       if (src.a < 0.01) discard;
 
-      vec2 pUv = vUv;
-      if (pixelSize > 1.0) {
-        vec2 d = pixelSize / resolution;
-        pUv = floor(vUv / d) * d + 0.5 * d;
-      }
-
-      vec3 col = vec3(0.0);
-      float w[9] = float[](0.0625,0.125,0.0625,0.125,0.25,0.125,0.0625,0.125,0.0625);
-      if (blurAmount > 0.0) {
-        int i = 0;
-        for (int x = -1; x <= 1; ++x)
-          for (int y = -1; y <= 1; ++y)
-            col += texture2D(tDiffuse, pUv + vec2(x, y) * blurAmount / resolution).rgb * w[i++];
-      } else {
-        col = texture2D(tDiffuse, pUv).rgb;
-      }
-
+      vec3 col = src.rgb;
       float lum = dot(col, vec3(0.299, 0.587, 0.114));
       float idx = lum * float(u_paletteSize - 1);
-      int i1 = clamp(int(floor(idx)), 0, u_paletteSize - 1);
-      int i2 = clamp(i1 + 1, 0, u_paletteSize - 1);
-      float d = texture2D(tBayer, mod(gl_FragCoord.xy, bayerTileSize) / bayerTileSize).r;
-      vec3 finalColor = mix(u_palette[i1], u_palette[i2], step(d, fract(idx)));
+      int i1 = int(clamp(floor(idx), 0.0, float(u_paletteSize - 1)));
+      int i2 = min(i1 + 1, u_paletteSize - 1);
+
+      float dither = texture2D(tBayer, mod(gl_FragCoord.xy, bayerTileSize) / bayerTileSize).r;
+      vec3 finalColor = mix(u_palette[i1], u_palette[i2], step(dither, fract(idx)));
+
       gl_FragColor = vec4(finalColor, src.a);
-    }`
+    }`,
 };
 
 export default function RetroDitheredCanvas() {
@@ -79,87 +71,66 @@ export default function RetroDitheredCanvas() {
     if (!el) return;
 
     const scene = new THREE.Scene();
-    scene.background = null;
-
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
     camera.position.set(0, 2, 18);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    const size = el.clientWidth || 300;
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+    const size = el.clientWidth;
+    const dpr = window.devicePixelRatio;
     renderer.setSize(size, size);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(dpr);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-
-
-    renderer.shadowMap.enabled = true;
     el.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.enableZoom = false;
-    controls.enablePan = false;
+    controls.enableZoom = controls.enablePan = false;
     controls.target.set(0, 0.5, 0);
 
     scene.add(new THREE.AmbientLight(0xffffff, CONFIG.ambientLight));
     const dirLight = new THREE.DirectionalLight(0xffffff, CONFIG.directionalLight);
     dirLight.position.set(1.5, 1.5, 2);
-
-    // 2. Enable shadow casting for the directional light
     dirLight.castShadow = true;
-
-    // Optional: Configure shadow properties for the light
-    dirLight.shadow.mapSize.width = 1024; // default is 512
-    dirLight.shadow.mapSize.height = 1024; // default is 512
-    dirLight.shadow.camera.near = 0.5; // default
-    dirLight.shadow.camera.far = 50; // default
-
-    const shadowCamSize = 60;
-    dirLight.shadow.camera.left = -shadowCamSize;
-    dirLight.shadow.camera.right = shadowCamSize;
-    dirLight.shadow.camera.top = shadowCamSize;
-    dirLight.shadow.camera.bottom = -shadowCamSize;
-
-    camera.add(dirLight); // Light moves with the camera
-    scene.add(camera); // Add camera to scene (which now contains the light)
-
+    dirLight.shadow.mapSize.set(1024, 1024);
+    Object.assign(dirLight.shadow.camera, {
+      near: 0.5, far: 50,
+      left: -20, right: 20, top: 20, bottom: -20,
+    });
+    camera.add(dirLight);
+    scene.add(camera);
 
     const pivot = new THREE.Group();
     pivot.position.set(0, 0.5, 0);
     scene.add(pivot);
 
     const composer = new EffectComposer(renderer);
-    composer.addPass(new RenderPass(scene, camera));
     const shaderPass = new ShaderPass(CombinedShader);
-    const res = size * window.devicePixelRatio;
-    shaderPass.uniforms.resolution.value.set(res, res);
+    const resolution = size * dpr;
+    shaderPass.uniforms.resolution.value.set(resolution, resolution);
+    composer.addPass(new RenderPass(scene, camera));
     composer.addPass(shaderPass);
 
-    new THREE.TextureLoader().load(CONFIG.bayerPath, (tex) => {
+    new THREE.TextureLoader().load(CONFIG.bayerPath, tex => {
       tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
       tex.minFilter = tex.magFilter = THREE.NearestFilter;
       shaderPass.uniforms.tBayer.value = tex;
     });
 
-    new GLTFLoader().load(CONFIG.modelPath, (gltf) => {
+    new GLTFLoader().load(CONFIG.modelPath, gltf => {
       gltf.scene.traverse(child => {
         if (child.isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-
-          child.material = new THREE.MeshStandardMaterial({
-            color: 0xffffff,
-            roughness: CONFIG.roughness,
-            metalness: CONFIG.metalness
-          });
+          child.castShadow = child.receiveShadow = true;
+          child.material = new THREE.MeshLambertMaterial({ color: 0xffffff });
         }
       });
       pivot.add(gltf.scene);
     });
 
     const clock = new THREE.Clock();
+    let id;
     const animate = () => {
-      requestAnimationFrame(animate);
+      id = requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
       pivot.rotation.y = t * 0.2;
       pivot.rotation.x = t * -0.05;
@@ -170,34 +141,28 @@ export default function RetroDitheredCanvas() {
 
     const onResize = () => {
       const s = el.clientWidth;
+      const res = s * dpr;
       renderer.setSize(s, s);
+      composer.setSize(s, s);
       camera.aspect = 1;
       camera.updateProjectionMatrix();
-      const r = s * window.devicePixelRatio;
-      shaderPass.uniforms.resolution.value.set(r, r);
-      composer.setSize(r, r); 
+      shaderPass.uniforms.resolution.value.set(res, res);
     };
     window.addEventListener("resize", onResize);
     onResize();
 
     return () => {
+      cancelAnimationFrame(id);
       window.removeEventListener("resize", onResize);
-      if (el && renderer.domElement) { 
-        el.removeChild(renderer.domElement);
-      }
-
-      scene.traverse(object => {
-        if (object.geometry) object.geometry.dispose();
-        if (object.material) {
-          if (Array.isArray(object.material)) {
-            object.material.forEach(material => material.dispose());
-          } else {
-            object.material.dispose();
-          }
-        }
+      scene.traverse(obj => {
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) Array.isArray(obj.material)
+          ? obj.material.forEach(m => m.dispose())
+          : obj.material.dispose();
       });
+      shaderPass.uniforms.tBayer.value?.dispose();
       renderer.dispose();
-      composer.dispose(); 
+      el.removeChild(renderer.domElement);
     };
   }, []);
 

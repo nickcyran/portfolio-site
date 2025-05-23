@@ -148,7 +148,7 @@ const Tech = () => {
       <div className="h-px bg-[#303070] my-1 mx-2" />
 
       <div className="px-2 pb-1 h-56 overflow-auto cli-scrollbar mr-2">
-        <p className="text-xs text-cli-light-gray mb-1 ml-1 ">Available skills (select to query):</p>
+        <p className="text-xs text-cli-light-gray mb-1 ml-1 ">Available skills (select to view mastery):</p>
         <motion.div
           className="flex flex-col gap-0  pr-1 "
           variants={staggerContainer(0.015, 0.025)}

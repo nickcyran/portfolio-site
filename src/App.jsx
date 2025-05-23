@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import {
   About, Contact,
-  Welcome, Navbar, Projects, StarsCanvas
+  Welcome, Navbar, Projects
 } from './components';
 
 const App = () => {
@@ -19,7 +19,6 @@ const App = () => {
 
         <div className='relative z-0'>
           <Contact />
-          <StarsCanvas />
         </div>
       </div>
     </BrowserRouter>
