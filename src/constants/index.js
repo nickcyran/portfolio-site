@@ -144,12 +144,12 @@ const projects = [
         color: "pink-text-gradient",
       },
       {
-        name: "binary",
-        color: "blue-text-gradient",
-      },
-      {
         name: "assembly",
         color: "green-text-gradient",
+      },  
+      {
+        name: "binary",
+        color: "blue-text-gradient",
       },
     ],
     image: sia32,

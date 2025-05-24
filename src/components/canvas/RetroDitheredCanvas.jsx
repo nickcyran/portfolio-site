@@ -10,7 +10,7 @@ import CanvasLoader from '../Loader';
 extend({ EffectComposer, ShaderPass, RenderPass });
 
 const CONFIG = {
-  pixelSize: 1.5,
+  pixelSize: 2,
   bayerSize: 12.0,
   ambientLight: 0.19,
   directionalLight: 2.75,
@@ -162,7 +162,7 @@ const Scene = () => {
 
 export default function RetroDitheredCanvas() {
   return (
-    <div className="relative w-full aspect-square">
+    <div className="relative w-full h-auto aspect-square">
       <Canvas shadows camera={{ position: [0, 2, 18], fov: 45 }} dpr={[1, 2]}>
         <Suspense fallback={<CanvasLoader />}>
           <ambientLight intensity={CONFIG.ambientLight} />
