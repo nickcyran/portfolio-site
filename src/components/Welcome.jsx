@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { styles } from '../styles';
 import { RetroDitheredCanvas } from './canvas';
 import { motion } from 'framer-motion';
@@ -100,8 +100,8 @@ const MainScreen = () => {
   const isPortrait = useIsPortrait();
 
   return (
-    <section className="scanlines relative w-full min-h-screen flex flex-col bg-[#0D0E0E] shadow-[inset_0_-15px_22px_0_rgba(0,0,0,0.7)] animated-gradient-bg">
-      <div className="absolute inset-0 bg-tile-pattern bg-repeat opacity-[2%]" style={{ zIndex: 0 }} />
+    <section className="relative w-full min-h-screen flex flex-col shadow-[inset_0_-15px_22px_0_rgba(0,0,0,0.7)] animated-gradient-bg scanlines ">
+      <div className="absolute inset-0 bg-tile-pattern bg-repeat opacity-[3%]" style={{ zIndex: 0 }} />
 
       <div
         className={`relative z-10 w-full max-w-[117rem] px-6 mx-auto flex
