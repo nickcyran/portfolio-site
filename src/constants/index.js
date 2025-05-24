@@ -61,7 +61,7 @@ const coursework = [
   {title: "Computer Vision"},
   {title: "Computer Architecture"},
   {title: "Operating Systems"},
-]
+];
 
 const technologies = [
   {
@@ -135,6 +135,46 @@ const experiences = [];
 
 const projects = [
   {
+    name: 'Handwritten Text Recognition',
+    description: 'A deep learning-based offline handwritten text recognition system using CRNN with CTC loss for line-level transcription.',
+    tags: [
+      { 
+        name: 'python',
+        color: 'blue-text-gradient'
+      },
+      {
+        name: 'pytorch',
+        color: 'orange-text-gradient'
+      },
+      {
+        name: 'machine_learning',
+        color: 'green-text-gradient'
+      }
+    ],
+    image: null,
+    source_code_link: 'https://github.com/nickcyran/Handwritten-Text-Recognition'
+  },
+  {
+    name: 'Operating System Simulation',
+    description: 'This project provides an operating system simulation in Java, offering a virtual environment to explore core OS principles. It demonstrates concepts like process and memory management, scheduling, and system calls.',
+    tags: [
+      {
+        name: "java",
+        color: "pink-text-gradient"
+      },
+      {
+        name:"concurrency",
+        color:"green-text-gradient"
+      },
+      {
+        name: "os",
+        color: 'blue-text-gradient'
+      }
+    ],
+    image: null,
+    source_code_link: 'https://github.com/nickcyran/Operating_System_Emulation' 
+  },
+  {
     name: "32-bit Computer Emulator",
     description:
       "Developed an emulator and assembly language for the SIA-32 chip architecture, with 4KB of main memory, caching mechanisms, and much more.",
@@ -150,7 +190,7 @@ const projects = [
       {
         name: "binary",
         color: "blue-text-gradient",
-      },
+      }
     ],
     image: sia32,
     source_code_link: "https://github.com/nickcyran/SIA32-Emulator",

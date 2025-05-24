@@ -12,50 +12,48 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
-        options={{
-          max: 20,
-          scale: 1,
-          speed: 450
-        }} className="bg-tertiary rounded-2xl w-[360px] " >
+        options={{reverse: true, perspective: 1500, max: 15, scale: 1.02, speed: 350 }}
+        className="bg-circuit-board-subtle project-card-hardware-border rounded-2xl w-[360px] p-1 min-h-[420px]"
+      >
+        <div className="rounded-[calc(theme(borderRadius.2xl)-4px)]">
 
-        <div className="relative w-full h-[230px] hover:cursor-pointer " 
-             onClick={() => window.open(source_code_link, "_blank")}
-        >
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover rounded-t-2xl "
-          />
+          <div
+            className="relative w-full h-[220px] hover:cursor-pointer image-container-hardware"
+            onClick={() => window.open(source_code_link, "_blank")}
+          >
+            <img
+              src={image}
+              alt={name}
+              className="w-full h-full object-cover rounded-t-[calc(theme(borderRadius.2xl)-4px)]"
+            />
 
-          <div className="absolute inset-0 flex justify-end card-img_hover shadow-inner rounded-t-2xl">
-            <div
-              className="bg-black w-8 h-8 rounded-full m-3 flex justify-center items-center cursor-pointer">
-              <img
-                src={github}
-                alt="github"
-                className="w-3/4 h-3/4 object-contain"
-              />
+            <div className="absolute inset-0 flex justify-end card-img_hover shadow-inner rounded-t-[calc(theme(borderRadius.2xl)-4px)]">
+              <div className="bg-[#2D3748] border border-[#4A5568] w-9 h-9 rounded-md m-3 flex justify-center items-center cursor-pointer shadow-md hover:bg-[#4A5568]" >
+                <img src={github} alt="github" className="w-2/3 h-2/3 object-contain filter " />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="m-3 pb-3">
-          <h3 className="font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <p key={tag.name} className={`text-[14px] ${tag.color}`}>#{tag.name}</p>
-            ))}
+ 
+          <div className="p-2 min-h-[190px] flex flex-col justify-end h-full">
+            <h3 className="font-bold text-[20.3px] project-name-hardware z-2">{name}</h3>
+            <p className="mt-2 text-[14px] text-[#94A3B8] min-h-[60px] z-2">{description}</p>
+
+            <div className="mt-4 flex flex-wrap gap-x-2 gap-y-3 items-end">
+              {tags.map((tag) => (
+                <p key={tag.name} className={`tag-chip ${tag.color}`}>{tag.name}</p>
+              ))}
+            </div>
           </div>
         </div>
       </Tilt>
     </motion.div>
-  )
-}
+  );
+};
 
 const Projects = () => {
   return (
-    <section className="mt-[-64px]">
+    <section className="">
       <motion.div variants={textVariant()} >
         <p className={styles.sectionSubText}>
           MY PROJECTS

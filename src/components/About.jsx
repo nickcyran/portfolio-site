@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Tilt } from 'react-tilt';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -12,10 +11,9 @@ import TypewriterText from '../utils/TypewriterText';
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
-    <Tilt options={{ max: 30, scale: 1, speed: 350 }} className="xs:w-[180px] w-full md:w-[200px]">
       <motion.div
         variants={fadeIn("right", "spring", 0.3 * index, 0.55)}
-        className="w-full aspect-[6/5]"
+        className="xs:w-[180px] w-full md:w-[200px] w-full aspect-[6/5]"
       >
         <div className="w-full h-full bg-[#010101] border border-[#303070] shadow-md text-[#E0E0E0] flex flex-col">
           <div className="flex items-center h-[8%] bg-[#000080] border-b border-[#303070] px-1.5 py-2 select-none">
@@ -35,19 +33,18 @@ const ServiceCard = ({ index, title, icon }) => {
 
           <div className="flex-grow py-5 px-4 flex flex-col justify-center items-center text-center overflow-hidden">
             <img src={icon} alt={title} className="w-[25%] object-contain filter grayscale aspect-square mb-[4%]" />
-            <h3 className="text-white text-[0.9rem] font-semibold mt-1"> {/* Added a small top margin for spacing if needed */}
+            <h3 className="text-white text-[0.9rem] font-semibold mt-1">
               {title}
             </h3>
           </div>
         </div>
       </motion.div>
-    </Tilt>
   );
 };
 
 const CourseworkCard = ({ title }) => {
   return (
-    <div className="bg-[#030330] border border-[#303070] p-3 rounded-lg shadow-md hover:shadow-purple-500/30 transition-shadow duration-300 min-w-[200px] xs:min-w-[180px]">
+    <div className="bg-[#030330] border border-[#303070] p-3 rounded-md shadow-md transition-shadow duration-300 min-w-[200px] xs:min-w-[180px]">
       <h3 className="text-white text-[0.85rem] font-medium text-center">{title}</h3>
     </div>
   );
@@ -74,7 +71,7 @@ const About = () => {
           {inView && (
             <TypewriterText
               text={introText}
-              speed={30}
+              speed={10}
               onComplete={() => setIntroComplete(true)}
             />
           )}
@@ -83,7 +80,7 @@ const About = () => {
           {inView && introComplete && (
             <TypewriterText
               text={overviewHeader}
-              speed={30}
+              speed={10}
               onComplete={() => setHeaderComplete(true)}
             />
           )}
@@ -95,7 +92,7 @@ const About = () => {
           {inView && headerComplete && (
             <TypewriterText
               text={overviewBody}
-              speed={20}
+              speed={10}
             />
           )}
         </p>
@@ -124,11 +121,11 @@ const About = () => {
         className="mt-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.5 }} // Stagger appearance after Tech/Services
+        transition={{ delay: 0.8, duration: 0.5 }} 
       >
         <div>
           <p className={styles.sectionSubText}>
-            Relevant Coursework.
+            Relevant Coursework
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4 sm:gap-6">
             {coursework.map((course, index) => (

@@ -11,7 +11,7 @@ const SectionWrapper = (Component, idName, sectionClassName = "") =>
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
-        className={`${styles.paddingX} sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0 ${sectionClassName}`}
+        className={`${styles.paddingX} sm:px-16 px-6 sm:pt-16 pt-10 max-w-7xl mx-auto relative z-0 ${sectionClassName}`}
       >
         <span className='hash-span' id={idName}>
           &nbsp;
