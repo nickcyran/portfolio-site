@@ -14,7 +14,8 @@
   scroll-behavior: smooth;
   color-scheme: dark;
 }
-html { scroll-padding-top: 64px; }
+
+
 .test {
   border: 1px solid red;
 }
@@ -77,6 +78,102 @@ html { scroll-padding-top: 64px; }
 .image-container-hardware img {
   border-top-left-radius: calc(theme(borderRadius.2xl) - 1px);
   border-top-right-radius: calc(theme(borderRadius.2xl) - 1px);
+}
+
+/* --- CRT Monitor Effects --- */
+
+@keyframes crt-flicker {
+  0% { opacity: 0.95; }
+  10% { opacity: 0.98; }
+  20% { opacity: 0.95; }
+  30% { opacity: 1.0; }
+  40% { opacity: 0.96; }
+  50% { opacity: 0.99; }
+  60% { opacity: 1.0; }
+  70% { opacity: 0.97; }
+  80% { opacity: 0.94; }
+  90% { opacity: 0.99; }
+  100% { opacity: 1.0; }
+}
+
+.crt-container {
+  position: relative; /* Needed for pseudo-elements */
+  /* --- Subtle Flicker Animation --- */
+  animation: crt-flicker 0.15s infinite;
+  /* --- Vignette Effect (Darker Edges) --- */
+  box-shadow: inset 0 0 80px 30px black, /* Inner shadow for vignette */
+              0 0 15px rgba(57, 255, 20, 0.6); /* Existing green glow */
+  overflow: hidden; /* Hide anything spilling out */
+}
+
+/* --- Scan Lines Overlay --- */
+.crt-container::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35), /* Darker line */
+    rgba(0, 0, 0, 0.35) 1px, /* Thickness */
+    transparent 1px, /* Gap */
+    transparent 3px /* Gap size */
+  );
+  opacity: 0.3; /* Make them subtle */
+  pointer-events: none; /* Allows interaction with elements below */
+  z-index: 100; /* Ensure it's on top */
+}
+
+/* --- Text Bloom Effect --- */
+.crt-text {
+  /* Adjust color and blur values to your liking! */
+  color: #39FF14; /* Your bright green */
+  text-shadow: 
+    0 0 2px rgba(57, 255, 20, 0.5),  /* Inner, subtle glow */
+    0 0 6px rgba(57, 255, 20, 0.4),  /* Main bloom */
+    0 0 12px rgba(57, 255, 20, 0.2); /* Fainter outer halo */
+}
+
+/* --- Apply Bloom to Inputs & Placeholders --- */
+.crt-input {
+  color: #39FF14;
+  text-shadow: 
+    0 0 2px rgba(57, 255, 20, 0.5), 
+    0 0 6px rgba(57, 255, 20, 0.4); 
+}
+
+.crt-input::placeholder {
+  color: #2a9d0f; /* A dimmer green */
+  text-shadow: 
+    0 0 2px rgba(42, 157, 15, 0.4); /* Dimmer bloom */
+  opacity: 1; /* Ensure placeholder is fully visible */
+}
+
+/* --- Apply Bloom to Button Text --- */
+.crt-button-text {
+   text-shadow: 
+    0 0 2px rgba(57, 255, 20, 0.5), 
+    0 0 6px rgba(57, 255, 20, 0.4); 
+}
+
+/* --- Ensure hover state bloom changes --- */
+.crt-button-hover-text {
+  color: #000;
+  text-shadow: none; /* No shadow when background is green */
+}
+
+/* --- Simple Blinking Cursor --- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s step-end infinite;
+  background-color: #39FF14; /* Match bloom color */
+  box-shadow: 0 0 3px rgba(57, 255, 20, 0.6); /* Give cursor a slight glow */
 }
 
 
@@ -171,12 +268,12 @@ html { scroll-padding-top: 64px; }
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(8, 8, 10, 0.76) 50%,
-      rgba(6, 2, 22, 0.308) 50%);
+  background-image: linear-gradient(rgba(4, 4, 39, 0.219) 50%,
+      rgba(0, 1, 14, 0.363) 50%);
   background-size: 100% 6px;
   z-index: 1;
   pointer-events: none;
-  animation: scanlineAnim 120s linear infinite;
+  animation: scanlineAnim 45s linear infinite;
 }
 
 @keyframes scanlineAnim {

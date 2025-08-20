@@ -9,6 +9,9 @@ module.exports = {
         secondary: "#aaa6c3",
         tertiary: "#151030",
         'menu-text': '#99e5ab',
+        'terminal-main': '#39FF14',
+        'terminal-sub': '#20e83b',
+        'terminal-placeholder': '#02570d'
       },
       screens: {
         xs: "450px",

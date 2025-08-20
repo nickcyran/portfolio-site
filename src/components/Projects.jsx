@@ -13,21 +13,21 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{reverse: true, perspective: 1500, max: 15, scale: 1.02, speed: 350 }}
-        className="bg-circuit-board-subtle project-card-hardware-border rounded-2xl w-[360px] p-1 min-h-[420px]"
+        className="bg-circuit-board-subtle project-card-hardware-border rounded-lg w-[360px] p-1 min-h-[420px]"
       >
-        <div className="rounded-[calc(theme(borderRadius.2xl)-4px)]">
+        <div className="rounded-[calc(theme(borderRadius.lg)-4px)]">
 
           <div
-            className="relative w-full h-[220px] hover:cursor-pointer image-container-hardware"
+            className="relative w-full h-[220px] hover:cursor-pointer "
             onClick={() => window.open(source_code_link, "_blank")}
           >
             <img
               src={image}
               alt={name}
-              className="w-full h-full object-cover rounded-t-[calc(theme(borderRadius.2xl)-4px)]"
+              className="w-full h-full object-cover rounded-t-[calc(theme(borderRadius.lg)-4px)]"
             />
 
-            <div className="absolute inset-0 flex justify-end card-img_hover shadow-inner rounded-t-[calc(theme(borderRadius.2xl)-4px)]">
+            <div className="absolute inset-0 flex justify-end card-img_hover shadow-inner rounded-t-[calc(theme(borderRadius.lg)-4px)]">
               <div className="bg-[#2D3748] border border-[#4A5568] w-9 h-9 rounded-md m-3 flex justify-center items-center cursor-pointer shadow-md hover:bg-[#4A5568]" >
                 <img src={github} alt="github" className="w-2/3 h-2/3 object-contain filter " />
               </div>

@@ -11,34 +11,34 @@ import TypewriterText from '../utils/TypewriterText';
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
-      <motion.div
-        variants={fadeIn("right", "spring", 0.3 * index, 0.55)}
-        className="xs:w-[180px] w-full md:w-[200px] w-full aspect-[6/5]"
-      >
-        <div className="w-full h-full bg-[#010101] border border-[#303070] shadow-md text-[#E0E0E0] flex flex-col">
-          <div className="flex items-center h-[8%] bg-[#000080] border-b border-[#303070] px-1.5 py-2 select-none">
-            <p className="text-[60%] text-white truncate flex-grow">{title}</p>
-            <div className="ml-auto flex items-center space-x-0.5">
-              {['_', '□', 'X'].map((val, i) => (
-                <div
-                  key={i}
-                  className={`w-3 h-3 text-[8px] flex items-center justify-center ${val === 'X' ? 'bg-red-500 hover:bg-red-400' : 'bg-gray-300 hover:bg-gray-200'
-                    } text-black font-sans cursor-default`}
-                >
-                  {val}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex-grow py-5 px-4 flex flex-col justify-center items-center text-center overflow-hidden">
-            <img src={icon} alt={title} className="w-[25%] object-contain filter grayscale aspect-square mb-[4%]" />
-            <h3 className="text-white text-[0.9rem] font-semibold mt-1">
-              {title}
-            </h3>
+    <motion.div
+      variants={fadeIn("right", "spring", 0.3 * index, 0.55)}
+      className="xs:w-[180px] w-full md:w-[200px] w-full aspect-[6/5] "
+    >
+      <div className="w-full h-full bg-[#010101] border border-[#303070] shadow-md text-[#E0E0E0] flex flex-col rounded-[4px]">
+        <div className="flex items-center h-[8%] bg-[#000080] border-b border-[#303070] px-1.5 py-2 select-none rounded-t-[4px]">
+          <p className="text-[60%] text-white truncate flex-grow">{title}</p>
+          <div className="ml-auto flex items-center space-x-0.5">
+            {['_', '□', 'X'].map((val, i) => (
+              <div
+                key={i}
+                className={`w-3 h-3 text-[8px] flex items-center justify-center ${val === 'X' ? 'bg-red-500 hover:bg-red-400' : 'bg-gray-300 hover:bg-gray-200'
+                  } text-black font-sans cursor-default`}
+              >
+                {val}
+              </div>
+            ))}
           </div>
         </div>
-      </motion.div>
+
+        <div className="flex-grow py-5 px-4 flex flex-col justify-center items-center text-center overflow-hidden">
+          <img src={icon} alt={title} className="w-[25%] object-contain filter grayscale aspect-square mb-[4%]" />
+          <h3 className="text-white text-[0.9rem] font-semibold mt-1">
+            {title}
+          </h3>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
@@ -102,13 +102,13 @@ const About = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }} 
+        transition={{ delay: 0.5, duration: 0.5 }}
       >
         <div className="flex flex-col lg:flex-row mt-10 gap-12 mb-[-3rem]">
           <div className="lg:w-5/7 w-full">
             <Tech />
           </div>
-          <div className="lg:w-1/6 w-full lg:flex-col flex flex-wrap gap-6 justify-center items-start items-center">
+          <div className="lg:w-1/6 w-full lg:flex-col flex flex-wrap gap-6 justify-center items-start items-center ">
             {services.map((service, index) => (
               <ServiceCard key={service.title} index={index} {...service} />
             ))}
@@ -121,7 +121,7 @@ const About = () => {
         className="mt-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.5 }} 
+        transition={{ delay: 0.8, duration: 0.5 }}
       >
         <div>
           <p className={styles.sectionSubText}>

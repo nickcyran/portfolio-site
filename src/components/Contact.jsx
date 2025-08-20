@@ -1,31 +1,42 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser'
+import emailjs from '@emailjs/browser';
 
 import { styles } from '../styles';
 import { ComputersCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 
+const FormField = ({ label, type = 'text', name, value, onChange, placeholder, rows }) => {
+  const InputComponent = type === 'textarea' ? 'textarea' : 'input';
+
+  return (
+    <label className="flex flex-col">
+      <span className="font-medium mb-3 crt-text">
+        {'>'} {label}:
+      </span>
+      <InputComponent
+        type={type === 'textarea' ? undefined : type} name={name}
+        value={value} onChange={onChange} placeholder={placeholder} rows={rows} 
+        className="bg-black py-3 px-4 placeholder:text-terminal-placeholder rounded-md border border-terminal-sub focus:outline-none focus:border-terminal-main focus:ring-1 focus:ring-terminal-main font-mono crt-input"
+      />
+    </label>
+  );
+};
+
 const Contact = () => {
   const formRef = useRef();
-
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value })
-  }
+    setForm({ ...form, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true); 
+    setLoading(true);
 
     emailjs.send(
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -38,95 +49,86 @@ const Contact = () => {
         message: form.message,
       },
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
-      .then(() => {
-        setLoading(false);
-        alert("Thank you! I will get back to you as soon as possible.");
-
-        setForm({
-          name: '',
-          email: '',
-          message: '',
-        });
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error(error);
-        alert('Something went wrong.');
-      });
-
-
-  }
+    ).then(() => {
+      setLoading(false);
+      alert("Message sent!");
+      setForm({ name: '', email: '', message: '' });
+    }).catch((error) => {
+      setLoading(false);
+      console.error(error);
+      alert('Message failed. Check connection.');
+    });
+  };
 
   return (
-    <div className="xl:mt-12 lg:flex-row flex-col-reverse flex lg:gap-4 gap-10 pb-32 overflow-hidden">
-      <motion.div
-        variants={slideIn('left', "tween", 0.2, 1)}
-        className="basis-5/12 bg-color-4 p-8 rounded-2xl">
-        <p className={styles.sectionSubText}>GET IN TOUCH</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+    <div>
+      <p className={`${styles.sectionSubText}`}>GET IN TOUCH</p>
+      <h3 className={`${styles.sectionHeadText}`}>Contact.</h3>
 
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="mt-12 flex flex-col gap-8">
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Name</span>
-            <input
-              type='text'
-              name='name'
+      <div className="mt-5 lg:flex-row flex-col-reverse flex lg:gap-4 gap-10 pb-24 overflow-hidden">
+        <motion.div
+          variants={slideIn('left', "tween", 0.2, 1)}
+          className="crt-container basis-5/12 bg-black p-8 rounded-lg border-2 border-terminal-sub font-mono text-green-500"
+        >
+          <p className="text-xl font-bold mb-4 crt-text">// CONTACT_FORM</p>
+
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="mt-6 flex flex-col gap-6"
+          >
+            <FormField
+              label="Your Name"
+              name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              placeholder="USER@HOST:~$"
             />
-          </label>
 
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Email</span>
-            <input
-              type='email'
-              name='email'
+            <FormField
+              label="Your Email"
+              type="email"
+              name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your email?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              placeholder="email@domain.com"
             />
-          </label>
 
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Message</span>
-            <textarea
-              rows='4'
-              name='message'
+            <FormField
+              label="Your Message"
+              type="textarea"
+              name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What do you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              placeholder="Type your message here..."
+              rows="4"
             />
-          </label>
 
-          <button
-            className='bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl'
-            type='submit'>{loading ? 'Sending...' : 'Send'}</button>
-        </form>
-      </motion.div>
+            <button
+              className='group bg-black border border-terminal-sub py-3 px-8 outline-none w-fit font-bold shadow-md shadow-terminal-main rounded-md font-mono hover:bg-terminal-main transition-colors duration-200 flex items-center'
+              type='submit'>
+              <span className="text-terminal-sub crt-button-text group-hover:text-black group-hover:crt-button-hover-text">
+                {loading ? 'SENDING...' : 'SEND'}
+              </span>
+              {!loading && <span className="ml-1 w-2 h-4 animate-blink group-hover:bg-black"></span>}
+            </button>
+          </form>
+        </motion.div>
 
-      <motion.div
-        variants={slideIn('right', "tween", 0.2, 1)}
-        className="flex-shrink-0 
-                  xs:h-[24rem] xs:w-[24rem]
-                  sm:h-[30rem] sm:w-[30rem]
-                  md:h-[32rem] md:w-[32rem] 
-                  lg:h-[32rem] lg:w-[32rem]
-
-                  h-[20rem] w-[20rem]
-                  mx-auto my-auto">
-
-        < ComputersCanvas/>
-      </motion.div>
+        <motion.div
+          variants={slideIn('right', "tween", 0.2, 1)}
+          className="flex-shrink-0 
+                     xs:h-[24rem] xs:w-[24rem]
+                     sm:h-[30rem] sm:w-[30rem]
+                     md:h-[32rem] md:w-[32rem] 
+                     lg:h-[32rem] lg:w-[32rem]
+                     h-[20rem] w-[20rem]
+                     mx-auto my-auto">
+          <ComputersCanvas />
+        </motion.div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default SectionWrapper(Contact, "contact");

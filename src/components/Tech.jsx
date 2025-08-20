@@ -101,9 +101,9 @@ const Tech = () => {
   }, [lines, activity, showPrompt]);
 
   return (
-    <motion.div variants={fadeIn("up", "tween", 0.1, 0.7)} className="flex flex-col bg-[#010101] p-0 border border-[#303070] shadow-md font-cascadia text-[#E0E0E0] w-full">
+    <motion.div variants={fadeIn("up", "tween", 0.1, 0.7)} className="flex flex-col bg-[#010101] rounded-[4px] p-0 border border-[#303070] shadow-md font-cascadia text-[#E0E0E0] w-full">
       {/* Header */}
-      <div className="flex items-center h-6 bg-[#000080] border-b border-[#303070] px-2 select-none">
+      <div className="flex items-center h-6 bg-[#000080] border-b border-[#303070] px-2 select-none rounded-t-[4px]">
         <p className="text-xs text-white">Command Prompt - Skill Analyzer</p>
         <div className="ml-auto flex items-center space-x-0.5">
           {['_', '□', 'X'].map((val, i) => (
@@ -130,7 +130,7 @@ const Tech = () => {
               <span>{CLI}</span>
               <TypewriterText
                 text={activity.text.substring(CLI.length)}
-                speed={40}
+                speed={10}
                 onComplete={onCommandTypingComplete}
               />
             </div>
@@ -152,9 +152,7 @@ const Tech = () => {
         <motion.div
           className="flex flex-col gap-0  pr-1 "
           variants={staggerContainer(0.015, 0.025)}
-          initial="hidden"
-          animate="show"
-          viewport={{ once: false, amount: 0.1 }}
+          initial="hidden" animate="show" viewport={{ once: false, amount: 0.1 }}
         >
           {technologies.map((tech) => {
             const isCurrentlySelected = currentSelectedTechVisual?.name === tech.name;
