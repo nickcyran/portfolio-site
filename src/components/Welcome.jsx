@@ -104,8 +104,8 @@ const MainScreen = () => {
       <div className="absolute inset-0 bg-tile-pattern bg-repeat opacity-[3%]" style={{ zIndex: 0 }} />
 
       <div
-        className={`relative z-10 w-full max-w-[117rem] px-6 mx-auto flex
-        ${isPortrait ? 'flex-col items-center pt-24' : 'flex-row items-center justify-between pt-10'}
+        className={`relative z-10 w-full max-w-[117rem] px-[3.2%] mx-auto flex
+        ${isPortrait ? 'flex-col items-center pt-24' : 'flex-row items-center justify-between pt-16'}
         flex-grow gap-x-10`}
       >
         <ProfileImageAndSocials isPortrait={isPortrait} />
