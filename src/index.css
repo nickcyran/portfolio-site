@@ -137,6 +137,22 @@
     0 0 12px rgba(57, 255, 20, 0.2); /* Fainter outer halo */
 }
 
+.crtHover:hover {
+  /* Adjust color and blur values to your liking! */
+  color: #39FF14; /* Your bright green */
+  text-shadow: 
+    0 0 2px rgba(57, 255, 20, 0.5),  /* Inner, subtle glow */
+    0 0 6px rgba(57, 255, 20, 0.4),  /* Main bloom */
+    0 0 12px rgba(57, 255, 20, 0.2); /* Fainter outer halo */
+}
+
+.crtHover:hover img {
+  filter: drop-shadow(0 0 1px #39FF14)
+          drop-shadow(0 0 1px #39FF14)
+          drop-shadow(0 0 1px rgba(57, 255, 20, 0.2))
+          brightness(1.5) saturate(4);
+}
+
 /* --- Apply Bloom to Inputs & Placeholders --- */
 .crt-input {
   color: #39FF14;

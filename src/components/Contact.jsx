@@ -11,7 +11,7 @@ const FormField = ({ label, type = 'text', name, value, onChange, placeholder, r
   const InputComponent = type === 'textarea' ? 'textarea' : 'input';
 
   return (
-    <label className="flex flex-col">
+    <label className="flex flex-col ">
       <span className="font-medium mb-3 crt-text">
         {'>'} {label}:
       </span>
@@ -68,7 +68,7 @@ const Contact = () => {
       <div className="mt-5 lg:flex-row flex-col-reverse flex lg:gap-4 gap-10 pb-24 overflow-hidden">
         <motion.div
           variants={slideIn('left', "tween", 0.2, 1)}
-          className="crt-container basis-5/12 bg-black p-8 rounded-lg border-2 border-terminal-sub font-mono text-green-500"
+          className="crt-container basis-5/12 bg-black p-8 rounded-md border-2 border-terminal-sub font-mono text-green-500"
         >
           <p className="text-xl font-bold mb-4 crt-text">// CONTACT_FORM</p>
 

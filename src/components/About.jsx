@@ -71,7 +71,7 @@ const About = () => {
           {inView && (
             <TypewriterText
               text={introText}
-              speed={10}
+              speed={20}
               onComplete={() => setIntroComplete(true)}
             />
           )}
@@ -80,7 +80,7 @@ const About = () => {
           {inView && introComplete && (
             <TypewriterText
               text={overviewHeader}
-              speed={10}
+              speed={20}
               onComplete={() => setHeaderComplete(true)}
             />
           )}
@@ -92,7 +92,7 @@ const About = () => {
           {inView && headerComplete && (
             <TypewriterText
               text={overviewBody}
-              speed={10}
+              speed={8}
             />
           )}
         </p>
