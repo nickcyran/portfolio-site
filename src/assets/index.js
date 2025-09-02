@@ -32,6 +32,8 @@ import interpreter from "./proj_thumbnail/interpreter.png";
 import calc from "./proj_thumbnail/calc.png";
 import renderer from "./proj_thumbnail/render.png"
 import sia32 from "./proj_thumbnail/sia32.jpg"
+import os from "./proj_thumbnail/os.png";
+import htr from "./proj_thumbnail/htr.png"
 
 //documents
 import resumepdf from "./documents/RESUME.pdf"
@@ -72,5 +74,6 @@ export {
   react,
   site,
   renderer,
-
+  os,
+  htr
 };

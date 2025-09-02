@@ -20,6 +20,8 @@ import {
   threejs,
   renderer,
   sia32,
+  os,
+  htr
 } from "../assets";
 
 export const navLinks = [
@@ -151,7 +153,7 @@ const projects = [
         color: 'green-text-gradient'
       }
     ],
-    image: null,
+    image: htr,
     source_code_link: 'https://github.com/nickcyran/Handwritten-Text-Recognition'
   },
   {
@@ -171,7 +173,7 @@ const projects = [
         color: 'blue-text-gradient'
       }
     ],
-    image: null,
+    image: os,
     source_code_link: 'https://github.com/nickcyran/Operating_System_Emulation' 
   },
   {
