@@ -6,15 +6,13 @@ This project is a dynamic and interactive portfolio website meticulously crafted
 
 The website luses a modern technology stack, primarily featuring **React** for a component-based architecture, **Node.js** for potential backend functionalities, and **JavaScript** as the core programming language. To make the website visually interesting I leveraged **Three.js** for 3D graphics, and  **Tailwind CSS** for appeal and responsiveness.
 
-
-
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/936358e3-b318-44d5-be9f-e9eb4d863942" alt="Portfolio Screenshot 1" />
+  <img src="https://github.com/user-attachments/assets/c7099e9d-bd98-4e39-a71a-3d88c5f255a6" alt="Portfolio Screenshot 1" />
 </p>
 
 <p align="center">
-   <img src="https://github.com/user-attachments/assets/d9949b6e-1756-42bf-bcb0-d33d35badbbb" alt="Portfolio Screenshot 2" width="400"/>
-   <img src="https://github.com/user-attachments/assets/1e50d52f-fc5a-4616-b899-319d28ef660f" alt="Portfolio Screenshot 3" width="400"/>
+   <img src="https://github.com/user-attachments/assets/3f8484f3-295e-4bca-874e-682d732b832e" alt="Portfolio Screenshot 2" width="400"/>
+   <img src="https://github.com/user-attachments/assets/e4503e07-a023-4eb4-ad4b-88e1bdee8d9b"  alt="Portfolio Screenshot 3" width="400"/>
 </p>
 
 ---
