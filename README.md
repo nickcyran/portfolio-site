@@ -56,43 +56,6 @@ The website luses a modern technology stack, primarily featuring **React** for a
 
 ---
 
-## Getting Started
-
-To get a local copy up and running, follow these simple steps.
-
-### Prerequisites
-
--   Node.js and npm (or yarn) installed on your machine.
-
-### Installation
-
-1.  **Clone the repo:**
-    ```sh
-    git clone [https://github.com/nickcyran/portfolio-site.git](https://github.com/nickcyran/portfolio-site.git)
-    ```
-2.  **Navigate to the project directory:**
-    ```sh
-    cd portfolio-site
-    ```
-3.  **Install NPM packages:**
-    ```sh
-    npm install
-    ```
-4.  **Start the development server:**
-    ```sh
-    npm run dev
-    ```
-    This will open the site in your default browser, usually at `http://localhost:5173/portfolio-site/` or a similar address.
-
-### Deployment
-
-The site is deployed using GitHub Pages. The following scripts are available for deployment:
-
--   `npm run predeploy`: Builds the application for production.
--   `npm run deploy`: Deploys the built application to GitHub Pages.
-
----
-
 ## Future Enhancements
 
 This portfolio will be regularly updated to:
