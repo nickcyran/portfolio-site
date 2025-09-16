@@ -56,7 +56,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 const Projects = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.05,
   });
 
   const [introComplete, setIntroComplete] = useState(false);
