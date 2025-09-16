@@ -7,7 +7,7 @@ import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn, staggerContainer } from "../utils/motion";
 import TypewriterText from "../utils/TypewriterText";
 
 const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
@@ -56,7 +56,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 const Projects = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.05,
+    threshold: 0.1,
   });
 
   const [introComplete, setIntroComplete] = useState(false);
@@ -64,12 +64,12 @@ const Projects = () => {
 
   const projectsIntro = "MY PROJECTS";
   const projectsHeader = "Projects.";
-  const projectsBody =
-    "This section showcases my capabilities and skills. All projects have a brief description and a link to its repository. These represent my problem-solving abilities, my proficiency in these languages, as well as my ability to work with various technologies. My resume can be found in the top right in the menu. I hope you like what you see.";
+  const projectsBody = "This section showcases my capabilities and skills. All projects have a brief description and a link to its repository. These represent my problem-solving abilities, my proficiency in these languages, as well as my ability to work with various technologies. My resume can be found in the top right in the menu. I hope you like what you see.";
 
   return (
+
     <section ref={ref}>
-      <motion.div variants={textVariant()}>
+      <motion.div>
         <p className={styles.sectionSubText}>
           {inView && (
             <TypewriterText
@@ -96,11 +96,17 @@ const Projects = () => {
         </div>
       </div>
 
-      <div className="mt-16 flex flex-wrap gap-7 justify-center items-center">
+      <motion.div
+        variants={staggerContainer()}
+        initial="hidden"
+        animate={inView ? "show" : "hidden"}
+        className="mt-16 flex flex-wrap gap-7 justify-center items-center"
+      >
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
-      </div>
+      </motion.div>
+
     </section>
   );
 };
